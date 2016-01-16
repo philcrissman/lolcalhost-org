@@ -29,6 +29,13 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 gem 'puma'
 
+gem 'haml-rails'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -45,3 +52,6 @@ group :development do
   gem 'spring'
 end
 
+group 'test' do
+  gem 'minitest-rails'
+end
