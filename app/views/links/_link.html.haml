@@ -1,0 +1,5 @@
+.row
+  =link_to link.title, link.url
+  %small{:style => "color: #aaa"}
+    =link_to_unless_current link.date_string, link_path(link)
+

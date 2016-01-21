@@ -7,8 +7,22 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %h1 Hello, World
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    = yield
+    .container
+      %h1
+        =link_to_unless_current "Raindrops", root_url
+      .row
+        %blockquote
+          %em
+            Raindrops on roses and whiskers on kittens
+            %br
+            Bright copper kettles and warm woolen mittens
+            %br
+            Brown paper packages tied up with strings
+            %br
+            These are a few of my favorite things
+      .notice
+        = notice
+      .alert
+        = alert
+      = yield
 

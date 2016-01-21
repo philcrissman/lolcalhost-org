@@ -32,6 +32,17 @@ gem 'puma'
 gem 'haml-rails'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 
+gem 'metainspector'
+gem 'pismo'
+gem 'link_thumbnailer'
+
+gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'simple_form'
+
+gem 'devise'
+gem 'stripe'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
