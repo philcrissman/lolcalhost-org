@@ -7,10 +7,18 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    %nav.navbar.navbar-dark.bg-inverse.navbar-full{:role => "navigation"}
+      =link_to_unless_current "Raindrops", root_url, :class => "navbar-brand"
+      .nav.navbar-nav.pull-md-right{:style => "display:inline;"}
+        =link_to "About", '#', :class => "nav-link nav-item"
+        =link_to "Account", '#', :class => "nav-link nav-item"
+        =link_to "Logout", '#', :class => "nav-link nav-item"
+
+
     .container
-      %h1
-        =link_to_unless_current "Raindrops", root_url
       .row
+        %br
+        %br
         %blockquote
           %em
             Raindrops on roses and whiskers on kittens

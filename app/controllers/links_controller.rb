@@ -2,10 +2,10 @@ class LinksController < ApplicationController
 
   def index
     @links = if params[:tag]
-      Link.tagged_with(params[:tag])
-    else
-      Link.all
-    end
+               link_user.links.tagged_with(params[:tag])
+             else
+               link_user.links.all
+             end
   end
 
   def new
@@ -30,5 +30,13 @@ class LinksController < ApplicationController
 
   def link_params
     params[:link].permit(:url, :title, :description)
+  end
+
+  def link_user
+    if params[:username]
+      Person.find_by_username params[:username]
+    else
+      current_person
+    end
   end
 end

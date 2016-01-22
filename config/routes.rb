@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'tags/:tag/links', to: "links#index"
 
+  get 'people/:username', to: "links#index"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

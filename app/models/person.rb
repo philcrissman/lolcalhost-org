@@ -6,4 +6,7 @@ class Person < ActiveRecord::Base
 
   validates :username, :presence => true, :uniqueness => true
 
+  has_many :link_ownerships
+  has_many :links, :through => :link_ownerships
+
 end

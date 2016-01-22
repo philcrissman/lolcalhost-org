@@ -1,12 +1,15 @@
 class Link < ActiveRecord::Base
   acts_as_taggable
 
+  has_many :link_ownerships
+  has_many :people, :through => :link_ownerships
+
   def date_string
     created_at.strftime("%e %b %Y")
   end
 
   def found_title
-    title || meta_title
+    [title, meta_title, url].select{|t| t unless t.blank?}.first
   end
 
   def refresh_metadata
