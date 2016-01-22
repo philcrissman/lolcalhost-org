@@ -5,6 +5,10 @@ class Link < ActiveRecord::Base
     created_at.strftime("%e %b %Y")
   end
 
+  def found_title
+    title || meta_title
+  end
+
   def refresh_metadata
     image_url = fetch_image_url
     meta_inspect = MetaInspector.new(url)

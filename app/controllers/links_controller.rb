@@ -1,7 +1,11 @@
 class LinksController < ApplicationController
 
   def index
-    @links = Link.all
+    @links = if params[:tag]
+      Link.tagged_with(params[:tag])
+    else
+      Link.all
+    end
   end
 
   def new
@@ -10,6 +14,7 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
+    @link.refresh_metadata
     if @link.save
       redirect_to link_path(@link)
     else
