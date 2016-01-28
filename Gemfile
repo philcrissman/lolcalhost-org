@@ -43,6 +43,11 @@ gem 'simple_form'
 gem 'devise'
 gem 'stripe'
 
+gem 'kaminari'
+
+gem 'pry'
+gem 'pry-byebug'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

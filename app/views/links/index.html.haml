@@ -1,7 +1,10 @@
-.row
-  =link_to "Add a link", new_link_path, :class => 'btn btn-primary'
-  %br
-  %br
+-if current_person && @link_person == current_person
+  .row
+    =link_to "Add a link", new_link_path, :class => 'btn btn-primary'
+    %br
+    %br
 
 .col-md-8
   =render @links
+
+  =paginate @links

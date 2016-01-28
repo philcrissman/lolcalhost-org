@@ -1,15 +1,43 @@
 class Link < ActiveRecord::Base
   acts_as_taggable
 
-  has_many :link_ownerships
+  has_many :link_ownerships, inverse_of: :link
   has_many :people, :through => :link_ownerships
+
+  validates :url, :uniqueness => true
+
+  accepts_nested_attributes_for :link_ownerships
 
   def date_string
     created_at.strftime("%e %b %Y")
   end
 
-  def found_title
-    [title, meta_title, url].select{|t| t unless t.blank?}.first
+  def found_title(person)
+    [title(person), meta_title, url].select{|t| t unless t.blank?}.first
+  end
+
+  def found_description(person)
+    [description(person), meta_description].select{|t| t unless t.blank?}.first
+  end
+
+  def title(person)
+    if person
+      person_link_ownership(person).title
+    else
+      ''
+    end
+  end
+
+  def description(person)
+    if person
+      person_link_ownership(person).description
+    else
+      ''
+    end
+  end
+
+  def person_link_ownership(person)
+    link_ownerships.reload.where(person_id: person.id).first
   end
 
   def refresh_metadata
@@ -27,11 +55,6 @@ class Link < ActiveRecord::Base
     end
     self.parsed_content = metadata.body
     self.raw_content = metadata.html_body
-
-    # Use lede as description if no description was supplied
-    if description.blank?
-      self.description = metadata.lede
-    end
 
     add_tags metadata
 

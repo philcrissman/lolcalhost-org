@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'people/:username', to: "links#index"
 
+  get ':page', to: 'static#show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

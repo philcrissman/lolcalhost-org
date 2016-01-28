@@ -84,19 +84,19 @@ p.subtitle { font-style: italic;
 
 .danger { color: red; }
 
-article { position: relative;
-          padding: 5rem 0rem; }
+/* article { position: relative; */
+/*           padding: 5rem 0rem; } */
 
-section { padding-top: 1rem;
-          padding-bottom: 1rem; }
+/* section { padding-top: 1rem; */
+/*           padding-bottom: 1rem; } */
 
-p, ol, ul { font-size: 1.4rem; }
+/* p, ol, ul { font-size: 1.4rem; } */
 
-p { line-height: 2rem;
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
-    padding-right: 0;
-    vertical-align: baseline; }
+/* p { line-height: 2rem; */
+/*     margin-top: 1.4rem; */
+/*     margin-bottom: 1.4rem; */
+/*     padding-right: 0; */
+/*     vertical-align: baseline; } */
 
 /* Chapter Epigraphs */
 div.epigraph { margin: 5em 0; }
@@ -112,19 +112,19 @@ div.epigraph > blockquote > footer > cite { font-style: italic; }
 
 /* end chapter epigraphs styles */
 
-blockquote { font-size: 1.4rem; }
+/* blockquote { font-size: 1.4rem; } */
 
-blockquote p { width: 50%; }
+/* blockquote p { width: 50%; } */
 
-blockquote footer { width: 50%;
-                    font-size: 1.1rem;
-                    text-align: right; }
+/* blockquote footer { width: 50%; */
+/*                     font-size: 1.1rem; */
+/*                     text-align: right; } */
 
-ol, ul { width: 45%;
-         -webkit-padding-start: 5%;
-         -webkit-padding-end: 5%; }
+/* ol, ul { width: 45%; */
+/*          -webkit-padding-start: 5%; */
+/*          -webkit-padding-end: 5%; } */
 
-li { padding: 0.5rem 0; }
+/* li { padding: 0.5rem 0; } */
 
 figure { padding: 0;
          border: 0;

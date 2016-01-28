@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 .env
+.sw*
+.*.sw*
+.byebug_history
