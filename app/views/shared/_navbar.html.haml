@@ -4,5 +4,5 @@
       Raindrops
   .nav.navbar-nav.pull-md-right{:style => "display:inline;"}
     =link_to "About", '/about', :class => "nav-link nav-item"
-    =render (current_person.present? ? "shared/logged_in_nav" : "shared/logged_out_nav")
+    =render (person_signed_in? ? "shared/logged_in_nav" : "shared/logged_out_nav")
 

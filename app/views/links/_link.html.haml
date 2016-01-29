@@ -1,10 +1,13 @@
 .row
-  =link_to link.url do
-    =link.found_title(@link_person)
-    %span.fa.fa-external-link
-  %small{:style => "color: #aaa"}
-    =link_to_unless_current '', link_path(link), :class => "fa fa-anchor"
-  %br
-  %img.pull-left{src: "#{link.image_url}", width: '100'}
-  =truncate(link.found_description(@link_person), length: 200)
+  .card.card-block.clearfix
+    =link_to link.url do
+      %h4.card-title
+        =link.found_title(@link_person)
+        %span.fa.fa-external-link
+    %small{:style => "color: #aaa"}
+      =link_to_unless_current '', link_path(link), :class => "fa fa-anchor"
+    %br
+    %img.card-img.pull-left{src: "#{link.image_url}", width: '100'}
+    .card-text
+      =truncate(link.found_description(@link_person), length: 200)
   

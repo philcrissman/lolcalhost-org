@@ -2,6 +2,8 @@ class LinksController < ApplicationController
 
   skip_before_action :authenticate_person!, :only => [:index, :show]
 
+  before_action :find_link, :only => [:show, :edit, :update, :destroy]
+
   def index
     @links = if link_person
                link_person.links.all.page(1)
@@ -26,14 +28,29 @@ class LinksController < ApplicationController
     @link.update_attributes(link_params)
     @link.refresh_metadata
     if @link.save
+      flash[:notice] = "Link created!"
       redirect_to link_path(@link)
     else
+      flash.now[:alert] = "There was a problem creating this link"
       render :new
     end
   end
 
   def show
-    @link = Link.find(params[:id])
+  end
+
+  def edit
+  end
+  
+  def update
+
+  end
+
+  def destroy
+    link_ownership = @link.link_ownerships.where(:person_id => current_person.id)
+    link_ownership.destroy
+    flash[:notice] = "Okay, you've removed that from your bookmarks"
+    redirect_to root_path
   end
 
   private
@@ -48,5 +65,9 @@ class LinksController < ApplicationController
                    else
                      current_person
                    end
+  end
+
+  def find_link
+    @link = Link.find(params[:id])
   end
 end

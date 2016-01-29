@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'tags/:tag/links', to: "links#index"
 
+  get 'profile', to: "people#show"
+
   get 'people/:username', to: "links#index"
 
   get ':page', to: 'static#show'

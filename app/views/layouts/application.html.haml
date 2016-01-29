@@ -11,9 +11,15 @@
 
 
     .container
-      .notice
-        = notice
-      .alert
-        = alert
+      .row
+        -flash.each do |type,message|
+          -type = "success" if type == "notice"
+          -type = "danger" if type == "alert"
+
+          .alert.alert-dismissable.fade.in{:class => "alert-#{type}"}
+            %button{type: "button", class: "close", 'data-dismiss':"alert", ":aria-label"=>"Close"}
+              %span{":aria-hidden"=>"true"}
+                &times;
+            = message
       = yield
 
