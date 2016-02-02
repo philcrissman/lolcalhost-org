@@ -1,8 +1,9 @@
 .col-md-6.col-md-offset-3.col-xs-12
   = simple_form_for(@link, html: { class: 'form-horizontal' }) do |form|
     =form.input :url
-    =form.simple_fields_for(:link_ownerships) do |link_ownerships_form|
+    =form.simple_fields_for(:link_ownerships, current_person.link_ownerships.where(:link_id => @link.id)) do |link_ownerships_form|
       =link_ownerships_form.input :title
       =link_ownerships_form.input :description
+      =link_ownerships_form.input :person_id, :value => current_person.id, :as => :hidden
     =form.button :submit, :class => 'btn btn-primary'
 

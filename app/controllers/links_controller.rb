@@ -37,13 +37,23 @@ class LinksController < ApplicationController
   end
 
   def show
+    link_person
   end
 
   def edit
   end
   
   def update
-
+    @link.update_attributes(link_params)
+    binding.pry
+    @link.refresh_metadata
+    if @link.save
+      flash[:notice] = "Link updated!"
+      redirect_to link_path @link
+    else
+      flash.now[:alert] = "There was a problem updating this link"
+      render :edit
+    end
   end
 
   def destroy
@@ -56,7 +66,7 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params[:link].permit(:url, :link_ownerships_attributes => [:title, :description])
+    params[:link].permit(:url, :link_ownerships_attributes => [:title, :description, :id, :person_id], :link_ownership => [:title, :description])
   end
 
   def link_person

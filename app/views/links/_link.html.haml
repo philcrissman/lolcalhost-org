@@ -2,6 +2,7 @@
   .card.card-block.clearfix
     =link_to link.url do
       %h4.card-title
+        -binding.pry
         =link.found_title(@link_person)
         %span.fa.fa-external-link
     %small{:style => "color: #aaa"}
